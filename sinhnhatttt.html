@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chúc mừng sinh nhật!</title>
+<style>
+  /* BODY + BACKGROUND */
+  body {
+  background: url('https://i.pinimg.com/1200x/44/57/9b/44579b2c7b9424b0bee34ec07ac36b2e.jpg') no-repeat center top;
+  background-size: cover;
+  animation: bgMove 10s linear infinite alternate;
+
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@keyframes bgMove {
+  0% { background-position: center top; }
+  100% { background-position: center bottom; }
+}
+
+}
+
+@keyframes bgMove {
+  0% { background-position: center top; }
+  100% { background-position: center bottom; }
+}
+
+  }
+
+  /* CHỮ NHẤP NHÁY */
+  h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 4em;
+  z-index: 10;
+
+  background: linear-gradient(90deg, 
+    #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #ff00de,
+    0 0 30px #ff00de,
+    0 0 40px #ff00de,
+    0 0 55px #ff00de,
+    0 0 75px #ff00de;
+    }
+
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+
+  /* PHÁO BÔNG */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: 0;
+    animation: fall 3s linear infinite;
+    z-index: 2; /* nằm dưới chữ */
+    border-radius: 50%;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+  }
+
+  /* ẢNH CHÍNH GIỮA XOAY VÒNG TRÒN */
+  .floating-img {
+    position: absolute;
+    width: 200px;  
+    height: auto;
+    z-index: 2;  
+    border-radius: 10px;
+    box-shadow: 0 0 20px #fff;
+    animation: rotateCircle 5s linear infinite;
+    top: 30%;
+    left: 45%;
+    transform-origin: center center;
+  }
+
+  @keyframes rotateCircle {
+    0%   { transform: translate(-150px, 0); }
+    25%  { transform: translate(0, -150px); }
+    50%  { transform: translate(150px, 0); }
+    75%  { transform: translate(0, 150px); }
+    100% { transform: translate(-150px, 0); }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎉 Chúc mừng sinh nhật Trúc Mai 🎂</h1>
+
+<!-- ẢNH CHÍNH GIỮA XOAY VÒNG TRÒN -->
+<img src="https://pbs.twimg.com/media/GyyVRhtWUAA8v48?format=jpg&name=medium" class="floating-img">
+
+<!-- TẠO PHÁO BÔNG -->
+<script>
+  for(let i=0;i<50;i++){
+    let c=document.createElement('div');
+    c.classList.add('confetti');
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+    c.style.animationDuration = 2+Math.random()*3 + 's';
+    c.style.width = c.style.height = (5+Math.random()*10) + 'px';
+    document.body.appendChild(c);
+  }
+</script>
+
+</body>
+</html>
