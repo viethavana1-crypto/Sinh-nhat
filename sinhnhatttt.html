@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Chúc mừng sinh nhật Trúc Mai!</title>
+<title>Chúc mừng sinh nhật!</title>
 
 <!-- PHÔNG CHỮ VIẾT TAY -->
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
   }
 
   @keyframes bgMove {
@@ -25,6 +24,7 @@
     100% { background-position: center bottom; }
   }
 
+  /* CHỮ SINH NHẬT (ĐÃ BỎ NEON) */
   h1 {
     position: absolute;
     top: 40%;
@@ -35,7 +35,6 @@
     color: white;
     font-family: 'Pacifico', cursive;
     text-shadow: 0 0 10px black;
-    margin: 0;
   }
 
   .confetti {
@@ -55,9 +54,9 @@
 
   .floating-img {
     position: absolute;
-    width: 200px;
+    width: 200px;  
     height: auto;
-    z-index: 2;
+    z-index: 2;  
     border-radius: 10px;
     box-shadow: 0 0 20px #fff;
     animation: rotateCircle 5s linear infinite;
@@ -74,198 +73,109 @@
     100% { transform: translate(-150px, 0); }
   }
 
+  /* NÚT BẬT / TẮT NHẠC */
   .music-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 14px 22px;
-    border-radius: 40px;
-    border: 2px solid white;
-    background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffd6e8);
-    color: #fff;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: none;
+    background: hotpink;
+    color: white;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     z-index: 9999;
-    box-shadow: 0 0 10px rgba(255,192,203,0.8), 0 0 20px rgba(255,192,203,0.6);
-    transition: all 0.2s ease;
-    font-family: "Comic Sans MS", cursive;
+    box-shadow: 0 0 10px hotpink;
   }
-  .music-btn:hover { transform: scale(1.1); background: linear-gradient(135deg, #ff69b4, #ffb6c1); box-shadow: 0 0 20px hotpink; }
-  .music-btn:active { transform: scale(0.95); }
+/* NÚT NHẠC DỄ THƯƠNG */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 14px 22px;
+  border-radius: 40px;
+  border: 2px solid white;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffd6e8);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(255,192,203,0.8),
+              0 0 20px rgba(255,192,203,0.6);
+  transition: all 0.2s ease;
+  font-family: "Comic Sans MS", cursive;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+  box-shadow: 0 0 20px hotpink;
+}
+
+.music-btn:active {
+  transform: scale(0.95);
+}
 </style>
 </head>
 
 <body>
 
-<h1 style="color:white; text-align:center; white-space:nowrap;">
+<h1 style="
+  color: white;
+  text-shadow:
+    -3px -3px 0 black,
+     3px -3px 0 black,
+    -3px  3px 0 black,
+     3px  3px 0 black;
+  text-align: center;
+  white-space: nowrap;
+">
 🎉 Chúc mừng sinh nhật Trúc Mai 🎂
 </h1>
 
-<img src="https://pbs.twimg.com/media/GyyVRhtWUAA8v48?format=jpg&name=medium" class="floating-img" alt="ảnh">
+<img src="https://pbs.twimg.com/media/GyyVRhtWUAA8v48?format=jpg&name=medium" class="floating-img">
 
-<!-- NHẠC NỀN (nếu muốn autoplay, trình duyệt có thể chặn; dùng nút để chắc) -->
-<audio id="music" loop preload="auto">
+<!-- NHẠC -->
+<audio id="music" loop>
   <source src="trucmai.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">▶ Bật nhạc 🎵</button>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+▶ Bật nhạc 🎵
+</button>
 
 <script>
 let isPlaying = false;
+
 function toggleMusic() {
   const music = document.getElementById("music");
   const btn = document.getElementById("musicBtn");
+
   if (!isPlaying) {
-    music.play().catch(()=>{}); // có thể bị chặn nếu chưa tương tác
+    music.play();
     btn.innerHTML = "⏸ Tắt nhạc";
     isPlaying = true;
   } else {
     music.pause();
-    btn.innerHTML = "▶ Bật nhạc 🎵";
+    btn.innerHTML = "▶ Ae Cortis lên 🎵";
     isPlaying = false;
   }
 }
 
-/* CONFETTI RƠI */
-for (let i = 0; i < 50; i++) {
-  let c = document.createElement('div');
+/* PHÁO BÔNG */
+for(let i=0;i<50;i++){
+  let c=document.createElement('div');
   c.classList.add('confetti');
-  c.style.left = Math.random() * 100 + 'vw';
-  c.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-  c.style.animationDuration = 2 + Math.random() * 3 + 's';
-  c.style.width = c.style.height = (5 + Math.random() * 10) + 'px';
+  c.style.left = Math.random()*100 + 'vw';
+  c.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+  c.style.animationDuration = 2+Math.random()*3 + 's';
+  c.style.width = c.style.height = (5+Math.random()*10) + 'px';
   document.body.appendChild(c);
 }
 </script>
 
-<!-- CANVAS PHÁO HOA -->
-<canvas id="fireworks" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9998;"></canvas>
-
-<!-- ÂM THANH PHÁO HOA -->
-<!-- Nếu bạn có file local: src="phaohoa.mp3" (đặt cùng thư mục với file .html)
-     Hoặc dùng link trực tiếp tới mp3 hợp lệ -->
-<audio id="phaohoa" src="phaohoa.mp3" preload="auto"></audio>
-
-<script>
-/* Fireworks canvas script (click để nổ + phát âm thanh) */
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-const sound = document.getElementById("phaohoa");
-
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
-resize();
-addEventListener("resize", resize);
-
-const gravity = 0.04;
-const fireworks = [];
-const particles = [];
-
-class Firework {
-  constructor(x = Math.random() * canvas.width, y = canvas.height, manual = false) {
-    this.x = x;
-    this.y = y;
-    this.targetX = manual ? x : Math.random() * canvas.width;
-    this.targetY = manual ? y : Math.random() * canvas.height * 0.4;
-    this.color = `hsl(${Math.random()*360}, 100%, 60%)`;
-    this.speed = 3;
-    this.angle = Math.atan2(this.targetY - this.y, this.targetX - this.x);
-  }
-
-  update() {
-    this.x += Math.cos(this.angle) * this.speed;
-    this.y += Math.sin(this.angle) * this.speed;
-    if (distance(this.x, this.y, this.targetX, this.targetY) < 6) {
-      this.explode();
-      return true;
-    }
-    return false;
-  }
-
-  explode() {
-    const count = 80 + Math.random() * 40;
-    for (let i = 0; i < count; i++) {
-      particles.push(new Particle(this.x, this.y, this.color));
-    }
-  }
-
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, 3, 3);
-  }
-}
-
-class Particle {
-  constructor(x, y, color) {
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.angle = Math.random() * Math.PI * 2;
-    this.speed = Math.random() * 5 + 2;
-    this.friction = 0.96;
-    this.alpha = 1;
-    this.decay = Math.random() * 0.02 + 0.01;
-  }
-
-  update() {
-    this.speed *= this.friction;
-    this.x += Math.cos(this.angle) * this.speed;
-    this.y += Math.sin(this.angle) * this.speed + gravity;
-    this.alpha -= this.decay;
-    return this.alpha <= 0;
-  }
-
-  draw() {
-    ctx.globalAlpha = this.alpha;
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2.2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-}
-
-function distance(x1, y1, x2, y2) {
-  return Math.hypot(x2 - x1, y2 - y1);
-}
-
-/* CLICK FIREWORK + SOUND: đẩy vào document để click ở đâu cũng nổ */
-document.addEventListener("click", (e) => {
-  // tạo firework ở vị trí click
-  fireworks.push(new Firework(e.clientX, e.clientY, true));
-
-  // play sound (nếu file tồn tại; nếu bị browser chặn thì cần tương tác trước)
-  if (sound) {
-    sound.currentTime = 0;
-    sound.play().catch(()=>{ /* bỏ qua lỗi autoplay */ });
-  }
-});
-
-/* ANIMATION LOOP */
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  if (Math.random() < 0.03) {
-    fireworks.push(new Firework());
-  }
-
-  fireworks.forEach((fw, i) => {
-    fw.draw();
-    if (fw.update()) fireworks.splice(i, 1);
-  });
-
-  particles.forEach((p, i) => {
-    p.draw();
-    if (p.update()) particles.splice(i, 1);
-  });
-
-  requestAnimationFrame(animate);
-}
-animate();
-</script>
-
 </body>
 </html>
+
