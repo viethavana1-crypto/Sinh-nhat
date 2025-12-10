@@ -174,7 +174,11 @@ for(let i=0;i<50;i++){
   c.style.width = c.style.height = (5+Math.random()*10) + 'px';
   document.body.appendChild(c);
 }
+document.addEventListener("click", (e) => {
+  fireworks.push(new Firework(e.clientX, e.clientY, true));
+});
 </script>
 
 </body>
 </html>
+
